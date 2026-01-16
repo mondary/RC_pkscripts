@@ -65,6 +65,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         if let button = item.button {
             button.image = NSImage(systemSymbolName: "tray", accessibilityDescription: "RC Scripts")
+            button.toolTip = "RC Scripts"
         }
 
         let menu = NSMenu()
@@ -94,33 +95,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func setupMultiStatusItems() {
-        let archiveItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        if let button = archiveItem.button {
-            button.image = NSImage(systemSymbolName: "archivebox", accessibilityDescription: "Archive Desktop")
-            button.target = self
-            button.action = #selector(runArchive)
-        }
-        archiveStatusItem = archiveItem
-
-        let wallpaperItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        if let button = wallpaperItem.button {
-            button.image = NSImage(systemSymbolName: "photo.on.rectangle", accessibilityDescription: "Wallpaper Loop")
-            button.target = self
-            button.action = #selector(toggleWallpaperLoop)
-        }
-        wallpaperStatusItem = wallpaperItem
-
-        let downloadsItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        if let button = downloadsItem.button {
-            button.image = NSImage(systemSymbolName: "arrow.down.to.line", accessibilityDescription: "Move Downloads to Desktop")
-            button.target = self
-            button.action = #selector(runDl2desk)
-        }
-        downloadsStatusItem = downloadsItem
-
+        // Status items are inserted to the left of existing ones.
+        // Create the rightmost item first to preserve the visual order.
         let optionsItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         if let button = optionsItem.button {
             button.image = NSImage(systemSymbolName: "gearshape", accessibilityDescription: "Options")
+            button.toolTip = "Options"
         }
         let menu = NSMenu()
         menu.addItem(optionsMenuItem())
@@ -128,6 +108,33 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(quitApp), keyEquivalent: "q"))
         optionsItem.menu = menu
         optionsStatusItem = optionsItem
+
+        let downloadsItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        if let button = downloadsItem.button {
+            button.image = NSImage(systemSymbolName: "arrow.down.to.line", accessibilityDescription: "Move Downloads to Desktop")
+            button.target = self
+            button.action = #selector(runDl2desk)
+            button.toolTip = "Move Downloads to Desktop"
+        }
+        downloadsStatusItem = downloadsItem
+
+        let wallpaperItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        if let button = wallpaperItem.button {
+            button.image = NSImage(systemSymbolName: "photo.on.rectangle", accessibilityDescription: "Wallpaper Loop")
+            button.target = self
+            button.action = #selector(toggleWallpaperLoop)
+            button.toolTip = "Start Wallpaper Loop"
+        }
+        wallpaperStatusItem = wallpaperItem
+
+        let archiveItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        if let button = archiveItem.button {
+            button.image = NSImage(systemSymbolName: "archivebox", accessibilityDescription: "Archive Desktop")
+            button.target = self
+            button.action = #selector(runArchive)
+            button.toolTip = "Archive Desktop"
+        }
+        archiveStatusItem = archiveItem
     }
 
     private func optionsMenuItem() -> NSMenuItem {
