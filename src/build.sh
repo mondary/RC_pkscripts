@@ -2,8 +2,9 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-APP_NAME="RCMenu"
-APP_DIR="$SCRIPT_DIR/${APP_NAME}.app"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+APP_NAME="PKscripts"
+APP_DIR="$ROOT_DIR/release/${APP_NAME}.app"
 CONTENTS_DIR="$APP_DIR/Contents"
 MACOS_DIR="$CONTENTS_DIR/MacOS"
 RESOURCES_DIR="$CONTENTS_DIR/Resources"

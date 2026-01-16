@@ -64,8 +64,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func setupSingleStatusItem() {
         let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         if let button = item.button {
-            button.image = NSImage(systemSymbolName: "tray", accessibilityDescription: "RC Scripts")
-            button.toolTip = "RC Scripts"
+            button.image = NSImage(systemSymbolName: "tray", accessibilityDescription: "PKscripts")
+            button.toolTip = "PKscripts"
         }
 
         let menu = NSMenu()
@@ -165,7 +165,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func scriptsDirectory() -> URL {
         let bundleURL = Bundle.main.bundleURL
-        return bundleURL.deletingLastPathComponent().deletingLastPathComponent()
+        return bundleURL
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
     }
 
     private func runScript(_ name: String, args: [String] = []) -> Process? {

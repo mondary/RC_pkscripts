@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleName</key>
-    <string>RCMenu</string>
+    <string>PKscripts</string>
     <key>CFBundleDisplayName</key>
-    <string>RCMenu</string>
+    <string>PKscripts</string>
     <key>CFBundleIdentifier</key>
-    <string>com.cmondary.rcmenu</string>
+    <string>com.cmondary.pkscripts</string>
     <key>CFBundleVersion</key>
     <string>1.0</string>
     <key>CFBundleShortVersionString</key>
@@ -15,7 +15,7 @@
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleExecutable</key>
-    <string>RCMenu</string>
+    <string>PKscripts</string>
     <key>LSUIElement</key>
     <true/>
 </dict>
